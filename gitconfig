@@ -1,0 +1,18 @@
+[user]
+    name  = Andrés Cimadamore
+    email = andrescimadamore@gmail.com
+[alias]
+    l  = log --date=format:'%d-%m-%Y %H:%M:%S'
+    st = status
+    a  = add
+    aa = add --all
+    c  = commit -v
+    cm = commit -m
+    co = checkout
+[core]
+    excludesFile = ~/.gitignore
+    editor = vim
+[push]
+    default = current
+[credential]
+    helper = cache

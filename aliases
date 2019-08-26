@@ -1,0 +1,32 @@
+alias c='clear'
+
+alias la='ls -lAF --time-style="+%d-%m-%Y %H:%M"'
+
+alias mkdir='mkdir -p'
+
+alias mv='mv -vi'
+
+alias tf='tail -f'
+
+alias du='du -hs'
+
+alias df='df -h'
+
+alias e=$EDITOR
+
+alias g=git
+
+[ -d ~/Dropbox ]   && alias db='cd ~/Dropbox'
+[ -d ~/Downloads ] && alias dw='cd ~/Downloads'
+[ -d ~/Workspace ] && alias ws='cd ~/Workspace'
+
+alias ~="cd ~"
+alias -- -="cd -"
+alias ..="cd .."
+alias ...="cd ../.."
+
+
+alias sys-update='sudo apt-get update       && \
+                  sudo apt-get dist-upgrade && \
+                  sudo apt-get autoclean    && \
+                  sudo apt-get autoremove'
