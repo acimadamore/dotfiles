@@ -40,7 +40,7 @@ symlink(){
         fi
       fi
 
-      ln -s "$HOME/.$file" "$PWD/$file"
+      ln -s "$PWD/$file" "$HOME/.$file" 
       echo -e "\e[92m \xE2\x9C\x94 \e[39m Created symbolic link: $HOME/.$file -> $PWD/$file"
     fi
   done

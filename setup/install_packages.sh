@@ -65,15 +65,15 @@ programs=(
 )
 
 for key in ${gpg_keys[@]}; do
-  curl -fsSL $key | apt-key add -
+  curl -fsSL $key | sudo apt-key add -
 done
 
-apt-key adv --recv-keys FC918B335044912E
+sudo apt-key adv --recv-keys FC918B335044912E
 
 notice "Added thirdparty GPG keys"
 
 for name in ${!repositories[@]}; do
-  echo ${repositories[$name]} | tee /etc/apt/sources.list.d/$name.list
+  echo ${repositories[$name]} | sudo tee /etc/apt/sources.list.d/$name.list
 done
 
 notice "Added thirdparty repositories"
@@ -85,6 +85,10 @@ apt install -y ${programs[@]}
 
 notice "Applications installed"
 
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+notice "Vim Plug installed"
+
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 mkdir -p ~/.rbenv/plugins
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
@@ -95,6 +99,6 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
 
 notice "NVM installed"
 
-apt dist-upgrade -y && apt autoclean -y && apt autoremove -y
+sudo apt dist-upgrade -y && sudo apt autoclean -y && sudo apt autoremove -y
 
 notice "System upgraded"
