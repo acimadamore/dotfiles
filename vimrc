@@ -91,6 +91,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'slim-template/vim-slim'
 Plug 'kchmck/vim-coffee-script'
 
+Plug 'valloric/youcompleteme'
+
 call plug#end()
 
 
