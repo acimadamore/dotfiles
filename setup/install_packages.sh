@@ -78,10 +78,10 @@ done
 
 notice "Added thirdparty repositories"
 
-apt update
+sudo apt update
 
-apt install -y ${required_packages[@]}
-apt install -y ${programs[@]}
+sudo apt install -y ${required_packages[@]}
+sudo apt install -y ${programs[@]}
 
 notice "Applications installed"
 
