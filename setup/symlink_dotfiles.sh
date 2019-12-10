@@ -1,7 +1,11 @@
 #!/bin/bash
 
 is_ignored_file(){
-  declare -ra ignored_files=( LICENSE.md README.md install.sh ssh setup )
+  declare -ra ignored_files=( LICENSE.md README.md install.sh setup.sh ssh setup )
+
+  declare -r regex="^backup_[0-9]+\.tar\.gz$"
+
+  [[ $1 =~ $regex ]] && return 0
 
   for ignored_file in ${ignored_files[@]}; do
     if [[ $ignored_file == $1 ]]; then
