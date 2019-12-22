@@ -133,6 +133,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# The Fuck
+eval $(thefuck --alias)
+
 # TMUX - Always attach default session
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
   # tmux has-session -t default 2> /dev/null
