@@ -50,6 +50,7 @@ programs=(
   mtr
   neofetch
   network-manager-openvpn
+  nmap
   partitionmanager
   ranger
   screen
@@ -60,6 +61,7 @@ programs=(
   tree
   unzip
   vim-gtk
+  vagrant
   virtualbox
   virtualbox-qt
 )
