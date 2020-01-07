@@ -1,12 +1,14 @@
 #!/bin/bash
 
+declare -r SUPPORTED_OS_FILE="${BASH_SOURCE%/*}/config/supported_os"
+
 command_exists() {
   command -v ${1} &> /dev/null
 }
 
 is_element_in_array() {
   declare searched_element=${1}
-  declare -a array=( ${@} )
+  declare -a array=( "${@}" )
 
   for element in ${array[@]:1}; do
     if [[ ${element} = ${searched_element} ]]; then
@@ -24,14 +26,35 @@ ask_confirmation() {
 }
 
 read_file() {
-  return $(cat ${1})
+  cat ${1} | grep -v '#'
 }
 
-operating_system() {
-  return $(lsb_release -is,,)
+os() {
+  lsb_release -is | tr '[:upper:]' '[:lower:]'
 }
 
-operating_system_release() {
-  return $(lsb_release -cs)
+os_codename() {
+  lsb_release -cs
+}
+
+os_release(){
+  lsb_release -rs
+}
+
+os_description() {
+  lsb_release -ds
+}
+
+is_os_supported() {
+  is_element_in_array "$(os)" "$(read_file ${SUPPORTED_OS_FILE})"
+}
+
+is_kde_desktop() {
+  [[ ${XDG_CURRENT_DESKTOP^^} =~ "KDE" ]]
+}
+
+
+notice(){
+  echo -e "\e[92m \xE2\x9C\x94 \e[39m $1" 
 }
 

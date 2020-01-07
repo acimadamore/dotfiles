@@ -1,7 +1,7 @@
 #!/bin/bash
 
-declare -r VIM_PLUG_URL="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+declare -r VIMPLUG__URL="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
-install_vim_plug() {
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs ${VIM_PLUG_URL}
+vimplug__install() {
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs ${VIMPLUG__URL}
 }

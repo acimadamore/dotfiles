@@ -1,24 +1,24 @@
 #!/bin/bash
 
-declare -r REPOSITORIES_PATH="./config/repositories"
+declare -r REPOSITORIES__PATH="${BASH_SOURCE%/*}/config/repositories"
 
-add_repository() {
+repositories__add() {
   echo ${2} | sudo tee /etc/apt/sources.list.d/${1}.list
 }
 
-read_repo_file() {
-  cat ${1} | sed -e "s/<OS_RELEASE>/$(lsb_release -cs)/g"
+repositories__read_file() {
+  echo "$(read_file ${1})" | sed -e "s/<OS_RELEASE>/$(os_codename)/g"
 }
 
-add_repository_from_file() {
+repositories__add_from_file() {
   declare -r filename=$(basename ${1})
-  declare -r repo_url="$(read_repo_file ${1})"
+  declare -r repo_url="$(repositories__read_file ${1})"
 
-  add_repository ${filename} "${repo_url}"
+  repositories__add ${filename} "${repo_url}"
 }
 
-add_third_party_repositories() {
-  for file in ${REPOSITORIES_PATH}/*; do
-    add_repository_from_file ${file}
+repositories__add_all() {
+  for file in ${REPOSITORIES__PATH}/*; do
+    repositories__add_from_file ${file}
   done
 }
