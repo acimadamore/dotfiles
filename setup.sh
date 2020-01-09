@@ -2,6 +2,7 @@
 
 source "./setup/utils.sh"
 
+source "./setup/docker.sh"
 source "./setup/gpg_keys.sh"
 source "./setup/nvm.sh"
 source "./setup/rbenv.sh"
@@ -30,6 +31,8 @@ gpg_key__install_all
 repositories__add_all
 
 system__install_programs
+
+docker__configure
 
 rbenv__install
 
