@@ -123,3 +123,9 @@ endif
 
 nnoremap <C-l> :bnext <CR>
 nnoremap <C-h> :bprevious <CR>
+
+
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
