@@ -1,11 +1,9 @@
 #!/bin/bash
 
-declare -r SYSTEM__PROGRAMS_PATH="${BASH_SOURCE%/*}/config/programs"
-declare -r SYSTEM__KDE_PROGRAMS_PATH="${BASH_SOURCE%/*}/config/kde_programs"
-
 system::install_programs() {
-  declare -a  programs=$(read_file ${SYSTEM__PROGRAMS_PATH})
-  declare -ra kde_programs=$(read_file ${SYSTEM__KDE_PROGRAMS_PATH})
+  declare -a  programs=$(read_file "${BASH_SOURCE%/*}/config/programs")
+
+  declare -ra kde_programs=$(read_file "${BASH_SOURCE%/*}/config/kde_programs")
 
   sudo apt-get update
 

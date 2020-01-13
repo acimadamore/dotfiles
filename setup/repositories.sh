@@ -1,7 +1,5 @@
 #!/bin/bash
 
-declare -r REPOSITORIES__PATH="${BASH_SOURCE%/*}/config/repositories"
-
 repositories::_add() {
   echo ${2} | sudo tee /etc/apt/sources.list.d/${1}.list
 }
@@ -18,7 +16,9 @@ repositories::_add_from_file() {
 }
 
 repositories::add_all() {
-  for file in ${REPOSITORIES__PATH}/*; do
+  declare -r repositories_path="${BASH_SOURCE%/*}/config/repositories"
+
+  for file in ${repositories_path}/*; do
     repositories::_add_from_file ${file}
   done
 }

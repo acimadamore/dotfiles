@@ -1,7 +1,5 @@
 #!/bin/bash
 
-declare -r GPG_KEYS__PATH="${BASH_SOURCE%/*}/config/gpg_keys"
-
 # TODO shame. Improve this.
 gpg_key::_is_url() {
   [[ ${1} =~ ^https ]]
@@ -26,7 +24,9 @@ gpg_key::_install() {
 }
 
 gpg_key::install_all() {
-  for key in ${GPG_KEYS__PATH}/*; do
+  declare -r gpg_keys_path="${BASH_SOURCE%/*}/config/gpg_keys"
+
+  for key in ${gpg_keys_path}/*; do
     gpg_key::_install ${key}
   done
 }
