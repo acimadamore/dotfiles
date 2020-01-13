@@ -26,16 +26,16 @@ if $(! command_exists "curl"); then
   sudo apt-get install curl
 fi
 
-gpg_key__install_all
+gpg_key::install_all
 
-repositories__add_all
+repositories::add_all
 
-system__install_programs
+system::install_programs
 
-docker__configure
+docker::configure
 
-rbenv__install
+rbenv::install
 
-nvm__install
+nvm::install
 
-system__upgrade
+system::upgrade

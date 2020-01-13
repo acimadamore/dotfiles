@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker__configure() {
+docker::configure() {
   sudo groupadd docker
   sudo usermod -aG docker $USER
 }
