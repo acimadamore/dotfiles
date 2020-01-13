@@ -25,4 +25,6 @@ rbenv::install() {
   rbenv::_install_required_packages
   rbenv::_clone_rbenv
   rbenv::_install_ruby_build
+
+  notice "rbenv & ruby build installed"
 }

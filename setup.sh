@@ -32,10 +32,10 @@ repositories::add_all
 
 system::install_programs
 
-docker::configure
-
 rbenv::install
 
 nvm::install
+
+docker::configure
 
 system::upgrade

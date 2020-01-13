@@ -12,10 +12,14 @@ system::install_programs() {
   fi
 
   sudo apt-get install -y ${programs[@]} 
+
+  notice "Programs installed"
 }
 
 system::upgrade() {
   sudo apt-get dist-upgrade -y && \\
   sudo apt-get autoclean    -y && \\
   sudo apt-get autoremove   -y
+
+  notice "System upgraded"
 }

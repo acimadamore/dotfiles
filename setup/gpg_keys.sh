@@ -29,5 +29,6 @@ gpg_key::install_all() {
   for key in ${gpg_keys_path}/*; do
     gpg_key::_install ${key}
   done
-}
 
+  notice "GPG keys installed"
+}

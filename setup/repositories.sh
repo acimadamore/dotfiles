@@ -21,4 +21,6 @@ repositories::add_all() {
   for file in ${repositories_path}/*; do
     repositories::_add_from_file ${file}
   done
+
+  notice "Added third party repositories"
 }

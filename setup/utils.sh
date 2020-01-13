@@ -53,7 +53,6 @@ is_kde_desktop() {
   [[ ${XDG_CURRENT_DESKTOP^^} =~ "KDE" ]]
 }
 
-
 notice(){
   echo -e "\e[92m \xE2\x9C\x94 \e[39m $1" 
 }
