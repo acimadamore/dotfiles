@@ -9,6 +9,10 @@ source "./setup/rbenv.sh"
 source "./setup/repositories.sh"
 source "./setup/system.sh"
 
+source "./setup/dotfiles.sh"
+source "./setup/vim_plug.sh"
+source "./setup/youcompleteme.sh"
+
 # TODO Move this
 if $(! is_os_supported); then
   if $(command_exists "apt-get"); then
@@ -39,3 +43,11 @@ nvm::install
 docker::configure
 
 system::upgrade
+
+dotfiles::install
+
+vimplug::install
+
+vimplug::install_vim_plugins
+
+ycm::install

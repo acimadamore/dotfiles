@@ -5,3 +5,7 @@ vimplug::install() {
 
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs ${vimplug_repository_url}
 }
+
+vimplug::install_vim_plugins() {
+  vim +'PlugInstall' +qa
+}

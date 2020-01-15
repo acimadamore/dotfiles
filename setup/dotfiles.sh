@@ -15,7 +15,8 @@ dotfiles::_backup() {
   declare -a backup
 
   for file in *; do
-    filepath="$HOME/.$file"
+    filepath="$HOME/.${file}"
+
     if [[ -e ${filepath} && ! -L ${filepath} ]];then
       backup+=(${filepath})
     fi
@@ -24,22 +25,57 @@ dotfiles::_backup() {
   tar -czvf backup_$(date +"%Y%m%d").tar.gz ${backup[@]}
 }
 
+dotfiles::_symlink_dir() {
+  if [[ ${#} -eq 0 ]]; then
+    read_dir="*"
+  else
+    read_dir="${1}/*"
+  fi
+
+  for file in ${read_dir}; do
+    if [[ -d ${file} ]]; then
+      dotfiles::_symlink_dir $file
+    else
+      dotfiles::_symlink_file $file
+    fi
+  done
+}
+
+dotfiles::_symlink_file() {
+
+  # if [[ -e "$HOME/.$file" ]]; then
+  #   if [[ -L "$HOME/.$file" ]]; then
+  #     continue
+  #   else
+  #     rm "$HOME/.${file}"
+  #   fi
+  # fi
+
+  # ln -s "$PWD/${file}" "$HOME/.${file}"
+
+  echo "file: ${1} -> \$HOME/.${1}" 
+}
+
 dotfiles::_symlink_files() {
-}
+  # declare -r is_root_directory=[[ ${#} -e 0 ]]
 
-dotfiles::_install_vimplug() {
-  echo "-- TODO -- Install Vimplug"
-}
-
-dotfiles::_install_vim_plugins() {
-  echo "-- TODO -- Install Vim plugins"
+  for file in *; do
+    if ! $(dotfiles::_is_ignored_file ${file}); then
+      if [[ -d ${file} ]]; then
+        dotfiles::_symlink_dir ${file}
+      else
+        dotfiles::_symlink_file ${file}
+      fi
+    fi
+  done
 }
 
 dotfiles::install() {
-  dotfiles::_backup
+  # dotfiles::_backup
 
-  dotfiles::_symlink_files
+  #dotfiles::_symlink_files
 
-  dotfiles::_install_vim_plugins
+  dotfiles::_symlink_dir 
 }
-
+cd ..
+dotfiles::install

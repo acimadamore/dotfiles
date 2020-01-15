@@ -1,9 +1,7 @@
 #!/bin/bash
 
-source "./utils.sh"
-
 ycm::_install_required_packages() {
-  declare -r ycm_required_packages=( $(read_file "./config/youcompleteme_required_packages") )
+  declare -r ycm_required_packages=( $(read_file "${BASH_SOURCE%/*}/config/youcompleteme_required_packages") )
 
   sudo apt-get install -y ${ycm_required_packages[@]}
 }
