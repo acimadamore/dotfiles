@@ -19,5 +19,7 @@ ycm::install() {
     python3 install.py --all
 
     cd -
+
+    notice "Vim's YouCompleteMe plugin  Installed"
   fi
 }

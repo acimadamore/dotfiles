@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source ./utils.sh
-
 dotfiles::_is_ignored_file() {
   declare -ra ignored_files=( LICENSE.md README.md setup setup.sh Vagrantfile )
 
@@ -25,57 +23,46 @@ dotfiles::_backup() {
   tar -czvf backup_$(date +"%Y%m%d").tar.gz ${backup[@]}
 }
 
-dotfiles::_symlink_dir() {
+dotfiles::_symlink_directory() {
   if [[ ${#} -eq 0 ]]; then
-    read_dir="*"
+    declare -r read_dir="*"
   else
-    read_dir="${1}/*"
+    declare -r read_dir="${1}/*"
   fi
 
+
   for file in ${read_dir}; do
-    if [[ -d ${file} ]]; then
-      dotfiles::_symlink_dir $file
-    else
-      dotfiles::_symlink_file $file
+    if ! $(dotfiles::_is_ignored_file ${file}); then
+
+      if [[ -d ${file} ]]; then
+        mkdir -p "$HOME/.${file}"
+        dotfiles::_symlink_directory $file
+      else
+        dotfiles::_symlink_file $file
+      fi
+
     fi
   done
 }
 
 dotfiles::_symlink_file() {
+  declare -r file=${1}
 
-  # if [[ -e "$HOME/.$file" ]]; then
-  #   if [[ -L "$HOME/.$file" ]]; then
-  #     continue
-  #   else
-  #     rm "$HOME/.${file}"
-  #   fi
-  # fi
-
-  # ln -s "$PWD/${file}" "$HOME/.${file}"
-
-  echo "file: ${1} -> \$HOME/.${1}" 
-}
-
-dotfiles::_symlink_files() {
-  # declare -r is_root_directory=[[ ${#} -e 0 ]]
-
-  for file in *; do
-    if ! $(dotfiles::_is_ignored_file ${file}); then
-      if [[ -d ${file} ]]; then
-        dotfiles::_symlink_dir ${file}
-      else
-        dotfiles::_symlink_file ${file}
-      fi
+  if [[ -e "$HOME/.${file}" ]]; then
+    if [[ -L "$HOME/.${file}" ]]; then
+      continue
+    else
+      rm "$HOME/.${file}"
     fi
-  done
+  fi
+
+  ln -s "$PWD/${file}" "$HOME/.${file}"
 }
 
 dotfiles::install() {
-  # dotfiles::_backup
+  dotfiles::_backup
 
-  #dotfiles::_symlink_files
+  dotfiles::_symlink_directory
 
-  dotfiles::_symlink_dir 
+  notice "Dotfiles installed"
 }
-cd ..
-dotfiles::install
