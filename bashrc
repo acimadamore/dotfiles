@@ -147,5 +147,9 @@ if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
   tmux attach-session -t default || tmux new -s default
 fi
 
+# FZF
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
 # Add local configuration
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local

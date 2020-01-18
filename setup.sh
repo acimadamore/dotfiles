@@ -4,6 +4,7 @@ source "./setup/utils.sh"
 
 source "./setup/docker.sh"
 source "./setup/gpg_keys.sh"
+source "./setup/fzf.sh"
 source "./setup/nvm.sh"
 source "./setup/rbenv.sh"
 source "./setup/repositories.sh"
@@ -35,6 +36,8 @@ gpg_key::install_all
 repositories::add_all
 
 system::install_programs
+
+fzf::install
 
 rbenv::install
 
