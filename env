@@ -1,7 +1,12 @@
+#!/bin/bash
+
 export VISUAL=vim
 export EDITOR="$VISUAL" 
 
 # less less, more bat 
 command -v bat &> /dev/null && export PAGER=bat
+
+export FZF_DEFAULT_OPTS="--multi --cycle --height 50% --layout reverse --preview  'bat --style=numbers --color=always {} ' --border"
+export FZF_DEFAULT_COMMAND='ag -g ""'
 
 [[ -f ~/.env.local ]] && source ~/.env.local
