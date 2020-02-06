@@ -12,6 +12,8 @@ alias du='du -hs'
 
 alias df='df -h'
 
+alias bc='bc -ql'
+
 alias e=$EDITOR
 
 alias g=git
