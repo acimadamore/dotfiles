@@ -104,6 +104,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='badwolf'
 
+set noshowmode
+
 " CtrlP 
 " Use The Silver Searcher instead of grep
 if executable('ag')
