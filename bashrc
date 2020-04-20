@@ -138,13 +138,13 @@ eval $(thefuck --alias)
 
 # TMUX - Always attach default session
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  # tmux has-session -t default 2> /dev/null
+  tmux has-session -t default 2> /dev/null
 
-  # if [ $? != 0 ]; then
-  #   tmux new -s default
-  # fi
+  if [ $? != 0 ]; then
+    tmux new -s default
+  fi
 
-  tmux attach-session -t default || tmux new -s default
+  #tmux attach-session -t default || tmux new -s default
 fi
 
 # FZF
