@@ -150,6 +150,8 @@ fi
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# direnv
+eval "$(direnv hook bash)"
 
 # Add local configuration
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
