@@ -47,7 +47,7 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
-set t_Co=256
+" set t_Co=256
 
 " Display extra whitespace
 set list 
@@ -84,19 +84,19 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
+Plug 'valloric/youcompleteme'
+
 Plug 'tpope/vim-rails'
 Plug 'posva/vim-vue'
-Plug 'airblade/vim-gitgutter'
-Plug 'terryma/vim-multiple-cursors'
-
 Plug 'slim-template/vim-slim'
+Plug 'glench/vim-jinja2-syntax'
 Plug 'kchmck/vim-coffee-script'
-
-Plug 'valloric/youcompleteme'
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
-
+set background=dark
 colorscheme molokai
 
 " Airline
