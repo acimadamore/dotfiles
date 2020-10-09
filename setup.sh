@@ -2,6 +2,7 @@
 
 source "./setup/utils.sh"
 
+source "./setup/bat.sh"
 source "./setup/docker.sh"
 source "./setup/gpg_keys.sh"
 source "./setup/fzf.sh"
@@ -42,6 +43,8 @@ fzf::install
 rbenv::install
 
 nvm::install
+
+bat::configure
 
 docker::configure
 
