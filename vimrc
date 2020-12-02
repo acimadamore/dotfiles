@@ -81,18 +81,19 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 
 Plug 'kien/ctrlp.vim'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
-Plug 'valloric/youcompleteme'
+" Plug 'valloric/youcompleteme'
 
-Plug 'tpope/vim-rails'
-Plug 'posva/vim-vue'
-Plug 'slim-template/vim-slim'
-Plug 'glench/vim-jinja2-syntax'
-Plug 'kchmck/vim-coffee-script'
-Plug 'pangloss/vim-javascript'
+Plug 'sheerun/vim-polyglot'
+" Plug 'tpope/vim-rails'
+" Plug 'posva/vim-vue'
+" Plug 'slim-template/vim-slim'
+" Plug 'glench/vim-jinja2-syntax'
+" Plug 'kchmck/vim-coffee-script'
+" Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
@@ -105,7 +106,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='badwolf'
 
-set noshowmode
+" set noshowmode
 
 " CtrlP 
 " Use The Silver Searcher instead of grep

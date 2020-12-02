@@ -1,11 +1,10 @@
-batcat
+bat
 containerd.io
 chromium-browser
 docker-ce
 docker-ce-cli
 docker-compose
 direnv
-dropbox
 exuberant-ctags
 git
 htop
@@ -25,5 +24,3 @@ tmux
 tree
 unzip
 vim-gtk
-vagrant
-virtualbox
