@@ -116,6 +116,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
+PS1='\[\033[01;34m\]\w \[\033[00m\]🐱 '
+
 if [ -f ~/.aliases ]; then
   . ~/.aliases
 fi
