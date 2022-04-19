@@ -1,4 +1,7 @@
 Include config.local
 
+ServerAliveInterval 5
+ServerAliveCountMax 3
+
 Host *
   User root
