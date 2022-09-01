@@ -136,7 +136,7 @@ command -v fnm >/dev/null || export PATH="~/.fnm:$PATH"
 eval "$(fnm env --use-on-cd)"
 
 # PYENV
-export PYENV_ROOT="~/.pyenv"
+export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="~/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 
