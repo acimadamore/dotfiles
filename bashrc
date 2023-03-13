@@ -119,47 +119,25 @@ fi
 
 PS1='\[\033[01;34m\]\w \[\033[00m\]🐱 '
 
-if [ -f ~/.aliases ]; then
-  . ~/.aliases
+[ -f ~/.aliases ] && source ~/.aliases
+
+[ -f ~/.env ] && source ~/.env
+
+
+if [ -d ~/.shellrc ]; then 
+  for rc_file in ~/.shellrc/*; do
+    source $rc_file
+  done
 fi
 
-if [ -f ~/.env ]; then
-  . ~/.env
-fi
+# if [ -f ~/.aliases ]; then
+#   . ~/.aliases
+# fi
 
-# RBENV
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# if [ -f ~/.env ]; then
+#   . ~/.env
+# fi
 
-# FNM
-command -v fnm >/dev/null || export PATH="~/.fnm:$PATH"
-eval "$(fnm env --use-on-cd)"
-
-# PYENV
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="~/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-
-
-# The Fuck
-eval $(thefuck --alias)
-
-# TMUX - Always attach default session
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  tmux has-session -t default 2> /dev/null
-
-  if [ $? != 0 ]; then
-    tmux new -s default
-  fi
-
-  #tmux attach-session -t default || tmux new -s default
-fi
-
-# direnv
-eval "$(direnv hook bash)"
-
-# FZF
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Add local configuration
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
