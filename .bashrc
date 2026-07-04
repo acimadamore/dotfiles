@@ -141,3 +141,8 @@ fi
 
 # Add local configuration
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
+
+[ -z "$TMUX" ] && command -v tmux &> /dev/null && tmux new -A -s default
+
+# opencode
+export PATH=/home/andres/.opencode/bin:$PATH
